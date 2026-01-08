@@ -21,7 +21,8 @@ const props = defineProps({
       around: 'f',
       timeNumRange: 0,
       relativeToCurrentTypeRange: 'year',
-      aroundRange: 'f'
+      aroundRange: 'f',
+      disallowCrossYear: false
     })
   },
   timeGranularityMultiple: {
@@ -53,7 +54,7 @@ const intervalTypeList = [
 const regularOrTrendsTitle = computed(() => {
   return intervalTypeList.find(ele => ele.value === timeRange.value.intervalType).label
 })
-const { timeRange } = toRefs(props)
+const { timeRange, timeGranularityMultiple } = toRefs(props)
 const dynamicTime = computed(() => {
   return timeRange.value.regularOrTrends !== 'fixed'
 })
@@ -307,6 +308,10 @@ watch(
   },
   { immediate: true }
 )
+
+const showDisallowCrossYear = computed(() => {
+  return timeGranularityMultiple.value === 'monthrange'
+})
 </script>
 
 <template>
@@ -477,6 +482,14 @@ watch(
           controls-position="right"
         />
         {{ relativeToCurrentTypeListTips }}
+      </div>
+    </div>
+    <div class="list-item" v-if="showDisallowCrossYear">
+      <div class="label">
+        <el-checkbox
+          v-model="timeRange.disallowCrossYear"
+          :label="t('v_query.disallow_cross_year')"
+        />
       </div>
     </div>
   </div>

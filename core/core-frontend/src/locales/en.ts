@@ -2856,6 +2856,7 @@ export default {
     option_type: 'Option type',
     time_filter_range: 'Set time filter range',
     configured: 'Configured',
+    disallow_cross_year: 'Disallow cross-year',
     is_not_supported: 'After binding parameters, empty data is not supported',
     contains_empty_data: 'The option value contains empty data',
     unnamed: 'Unnamed',

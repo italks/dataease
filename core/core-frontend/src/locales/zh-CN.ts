@@ -2790,6 +2790,7 @@ export default {
     option_type: '选项类型',
     time_filter_range: '设置时间筛选范围',
     configured: '已配置',
+    disallow_cross_year: '不允许跨年',
     is_not_supported: '绑定参数后，不支持传空数据',
     contains_empty_data: '选项值包含空数据',
     unnamed: '未命名',
