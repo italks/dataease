@@ -91,8 +91,8 @@ onBeforeMount(async () => {
     }) {
       if (!isPc.value) {
         if (!dvInfo.mobileLayout) {
-          useEmitt().emitter.emit('changeCurrentComponent', 'DashboardEmpty')
-          return
+          // useEmitt().emitter.emit('changeCurrentComponent', 'DashboardEmpty')
+          // return
         } else {
           dvMainStore.setMobileInPc(true)
           dvMainStore.setInMobile(true)

@@ -25,7 +25,8 @@ const props = withDefaults(
       around: 'f',
       timeNumRange: 0,
       relativeToCurrentTypeRange: 'year',
-      aroundRange: 'f'
+      aroundRange: 'f',
+      disallowCrossYear: false
     }),
     timeGranularity: 'year'
   }

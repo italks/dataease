@@ -201,6 +201,7 @@ interface TimeRange {
   relativeToCurrentTypeRange: ManipulateType
   aroundRange: string
   timeGranularityMultiple?: string
+  disallowCrossYear?: boolean
 }
 export {
   TimeRange,

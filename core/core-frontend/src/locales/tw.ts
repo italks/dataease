@@ -2784,6 +2784,7 @@ export default {
     option_type: '選項類型',
     time_filter_range: '設定時間篩選範圍',
     configured: '已配置',
+    disallow_cross_year: '不允許跨年',
     is_not_supported: '綁定參數後，不支援傳空資料',
     contains_empty_data: '選項值包含空資料',
     unnamed: '未命名',

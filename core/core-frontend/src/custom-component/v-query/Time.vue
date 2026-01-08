@@ -36,6 +36,7 @@ interface SelectConfig {
   timeRange: TimeRange
   placeholder: string
   setTimeRange: boolean
+  disallowCrossYear?: boolean
 }
 const { t } = useI18n()
 
@@ -274,9 +275,42 @@ const disabledDate = val => {
     maximumSingleQuery,
     timeNumRange,
     relativeToCurrentTypeRange,
-    aroundRange
+    aroundRange,
+    disallowCrossYear
   } = config.value.timeRange || {}
   let isDynamicWindowTime = false
+
+  // 不允许跨年的限制逻辑
+  const disallowCrossYearCheck = () => {
+    if (!disallowCrossYear || config.value.timeGranularityMultiple !== 'monthrange') {
+      return false
+    }
+
+    const selectValueArray = Array.isArray(selectValue.value) ? selectValue.value : []
+
+    const valDate = dayjs(val)
+    const valYear = valDate.year()
+
+    // 获取参考年份（第一个有效日期的年份）
+    let referenceYear = null
+
+    // 优先使用startWindowTime（如果存在且大于0，表示正在选择第二个日期）
+    if (startWindowTime.value > 0) {
+      referenceYear = dayjs(startWindowTime.value).year()
+    }
+    // 否则使用第一个已选择的日期（如果存在）
+    else if (selectValueArray.length > 0 && selectValueArray[0]) {
+      referenceYear = dayjs(selectValueArray[0]).year()
+    }
+
+    // 如果没有参考年份，不限制
+    if (referenceYear === null) {
+      return false
+    }
+
+    // 限制选择的日期必须与参考年份相同
+    return valYear !== referenceYear
+  }
 
   if (startWindowTime.value && dynamicWindow) {
     isDynamicWindowTime =
@@ -293,9 +327,12 @@ const disabledDate = val => {
         1000 >
         timeStamp
   }
+  // 检查不允许跨年的限制
+  const crossYearDisabled = disallowCrossYearCheck()
+
   if (intervalType === 'none') {
-    if (dynamicWindow) return isDynamicWindowTime
-    return false
+    if (dynamicWindow) return isDynamicWindowTime || crossYearDisabled
+    return crossYearDisabled
   }
   let startTime
   if (relativeToCurrent === 'custom') {
@@ -347,12 +384,13 @@ const disabledDate = val => {
   if (intervalType === 'start') {
     return (
       timeStamp < +new Date(dayjs(startValue).startOf('day').format('YYYY/MM/DD HH:mm:ss')) ||
-      isDynamicWindowTime
+      isDynamicWindowTime ||
+      crossYearDisabled
     )
   }
 
   if (intervalType === 'end') {
-    return timeStamp > +new Date(startValue) || isDynamicWindowTime
+    return timeStamp > +new Date(startValue) || isDynamicWindowTime || crossYearDisabled
   }
 
   if (intervalType === 'timeInterval') {
@@ -384,7 +422,8 @@ const disabledDate = val => {
     return (
       timeStamp < +new Date(startTime) - 1000 ||
       timeStamp > +new Date(endTime) ||
-      isDynamicWindowTime
+      isDynamicWindowTime ||
+      crossYearDisabled
     )
   }
 }
@@ -477,7 +516,7 @@ const formatDate = computed(() => {
   <el-date-picker
     v-model="selectValue"
     v-if="multiple"
-    :key="config.timeGranularityMultiple"
+    :key="`${config.timeGranularityMultiple}-${config.timeRange?.disallowCrossYear || false}`"
     :type="config.timeGranularityMultiple"
     :style="selectStyle"
     ref="datePicker"

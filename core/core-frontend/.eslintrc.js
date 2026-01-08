@@ -35,6 +35,8 @@ module.exports = {
     ],
     'vue/multi-word-component-names': 0,
     '@typescript-eslint/no-explicit-any': ['off'],
-    'vue/no-setup-props-destructure': ['off']
+    'vue/no-setup-props-destructure': ['off'],
+    // 忽略 prettier 的行尾符检查
+    "prettier/prettier": ['off']
   }
 }
