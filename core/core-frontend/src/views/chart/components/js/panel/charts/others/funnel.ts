@@ -42,7 +42,7 @@ export class Funnel extends G2PlotChartView<FunnelOptions, G2Funnel> {
       'letterSpace',
       'fontShadow'
     ],
-    'legend-selector': ['icon', 'orient', 'color', 'fontSize', 'hPosition', 'vPosition']
+    'legend-selector': ['icon', 'orient', 'color', 'fontSize', 'hPosition', 'vPosition', 'autoWrap']
   }
   axis: AxisType[] = ['xAxis', 'yAxis', 'filter', 'drill', 'extLabel', 'extTooltip']
   axisConfig: AxisConfig = {

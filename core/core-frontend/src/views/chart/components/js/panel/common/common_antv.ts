@@ -384,7 +384,7 @@ export function getLegend(chart: Chart) {
           }
         }
 
-        legend = {
+        const legendConfig: any = {
           layout: orient,
           position: position,
           offsetX: offsetX,
@@ -402,8 +402,16 @@ export function getLegend(chart: Chart) {
             }
           },
           itemHeight: (l.fontSize > l.size * 2 ? l.fontSize : l.size * 2) + 4,
-          radio: false,
-          pageNavigator: {
+          radio: false
+        }
+
+        // 根据 autoWrap 配置决定是否使用分页
+        if (l.autoWrap) {
+          // 自动换行：禁用分页，隐藏三角形切换图标和页数
+          legendConfig.flipPage = false
+        } else {
+          // 不自动换行：启用分页导航
+          legendConfig.pageNavigator = {
             marker: {
               style: {
                 fill: 'rgba(0,0,0,0.65)',
@@ -419,6 +427,8 @@ export function getLegend(chart: Chart) {
             }
           }
         }
+
+        legend = legendConfig
       } else {
         legend = false
       }
@@ -439,42 +449,42 @@ export function getXAxis(chart: Chart) {
         const title =
           a.nameShow && a.name && a.name !== ''
             ? {
-                text: a.name,
-                style: {
-                  fill: a.color,
-                  fontSize: a.fontSize
-                },
-                spacing: 8
-              }
+              text: a.name,
+              style: {
+                fill: a.color,
+                fontSize: a.fontSize
+              },
+              spacing: 8
+            }
             : null
         const grid = a.splitLine.show
           ? {
-              line: {
-                style: {
-                  stroke: a.splitLine.lineStyle.color,
-                  lineWidth: a.splitLine.lineStyle.width,
-                  lineDash: getLineDash(a.splitLine.lineStyle.style)
-                }
+            line: {
+              style: {
+                stroke: a.splitLine.lineStyle.color,
+                lineWidth: a.splitLine.lineStyle.width,
+                lineDash: getLineDash(a.splitLine.lineStyle.style)
               }
             }
+          }
           : null
         const axisCfg = a.axisLine ? a.axisLine : DEFAULT_XAXIS_STYLE.axisLine
         const line = axisCfg.show
           ? {
-              style: {
-                stroke: axisCfg.lineStyle.color,
-                lineWidth: axisCfg.lineStyle.width,
-                lineDash: getLineDash(axisCfg.lineStyle.style)
-              }
+            style: {
+              stroke: axisCfg.lineStyle.color,
+              lineWidth: axisCfg.lineStyle.width,
+              lineDash: getLineDash(axisCfg.lineStyle.style)
             }
+          }
           : null
         const tickLine = axisCfg.show
           ? {
-              style: {
-                stroke: axisCfg.lineStyle.color,
-                lineWidth: axisCfg.lineStyle.width
-              }
+            style: {
+              stroke: axisCfg.lineStyle.color,
+              lineWidth: axisCfg.lineStyle.width
             }
+          }
           : null
         let textAlign = 'center'
         const rotate = a.axisLabel.rotate
@@ -486,14 +496,14 @@ export function getXAxis(chart: Chart) {
         }
         const label = a.axisLabel.show
           ? {
-              rotate: (rotate * Math.PI) / 180,
-              style: {
-                fill: a.axisLabel.color,
-                fontSize: a.axisLabel.fontSize,
-                textAlign: textAlign,
-                fontFamily: chart.fontFamily
-              }
+            rotate: (rotate * Math.PI) / 180,
+            style: {
+              fill: a.axisLabel.color,
+              fontSize: a.axisLabel.fontSize,
+              textAlign: textAlign,
+              fontFamily: chart.fontFamily
             }
+          }
           : null
 
         axis = {
@@ -521,42 +531,42 @@ export function getYAxis(chart: Chart) {
   const title =
     yAxis.nameShow && yAxis.name && yAxis.name !== ''
       ? {
-          text: yAxis.name,
-          style: {
-            fill: yAxis.color,
-            fontSize: yAxis.fontSize
-          },
-          spacing: 8
-        }
+        text: yAxis.name,
+        style: {
+          fill: yAxis.color,
+          fontSize: yAxis.fontSize
+        },
+        spacing: 8
+      }
       : null
   const grid = yAxis.splitLine.show
     ? {
-        line: {
-          style: {
-            stroke: yAxis.splitLine.lineStyle.color,
-            lineWidth: yAxis.splitLine.lineStyle.width,
-            lineDash: getLineDash(yAxis.splitLine.lineStyle.style)
-          }
+      line: {
+        style: {
+          stroke: yAxis.splitLine.lineStyle.color,
+          lineWidth: yAxis.splitLine.lineStyle.width,
+          lineDash: getLineDash(yAxis.splitLine.lineStyle.style)
         }
       }
+    }
     : null
   const axisCfg = yAxis.axisLine ? yAxis.axisLine : DEFAULT_YAXIS_STYLE.axisLine
   const line = axisCfg.show
     ? {
-        style: {
-          stroke: axisCfg.lineStyle.color,
-          lineWidth: axisCfg.lineStyle.width,
-          lineDash: getLineDash(axisCfg.lineStyle.style)
-        }
+      style: {
+        stroke: axisCfg.lineStyle.color,
+        lineWidth: axisCfg.lineStyle.width,
+        lineDash: getLineDash(axisCfg.lineStyle.style)
       }
+    }
     : null
   const tickLine = axisCfg.show
     ? {
-        style: {
-          stroke: axisCfg.lineStyle.color,
-          lineWidth: axisCfg.lineStyle.width
-        }
+      style: {
+        stroke: axisCfg.lineStyle.color,
+        lineWidth: axisCfg.lineStyle.width
       }
+    }
     : null
   const rotate = yAxis.axisLabel.rotate
   let textAlign = 'end'
@@ -586,20 +596,20 @@ export function getYAxis(chart: Chart) {
   }
   const label = yAxis.axisLabel.show
     ? {
-        rotate: (rotate * Math.PI) / 180,
-        style: {
-          fill: yAxis.axisLabel.color,
-          fontSize: yAxis.axisLabel.fontSize,
-          textBaseline,
-          textAlign,
-          fontFamily: chart.fontFamily
-        },
-        formatter: value => {
-          return value.length > yAxis.axisLabel.lengthLimit
-            ? value.substring(0, yAxis.axisLabel.lengthLimit) + '...'
-            : value
-        }
+      rotate: (rotate * Math.PI) / 180,
+      style: {
+        fill: yAxis.axisLabel.color,
+        fontSize: yAxis.axisLabel.fontSize,
+        textBaseline,
+        textAlign,
+        fontFamily: chart.fontFamily
+      },
+      formatter: value => {
+        return value.length > yAxis.axisLabel.lengthLimit
+          ? value.substring(0, yAxis.axisLabel.lengthLimit) + '...'
+          : value
       }
+    }
     : null
 
   axis = {
@@ -623,42 +633,42 @@ export function getYAxisExt(chart: Chart) {
   const title =
     yAxis.nameShow && yAxis.name && yAxis.name !== ''
       ? {
-          text: yAxis.name,
-          style: {
-            fill: yAxis.color,
-            fontSize: yAxis.fontSize
-          },
-          spacing: 8
-        }
+        text: yAxis.name,
+        style: {
+          fill: yAxis.color,
+          fontSize: yAxis.fontSize
+        },
+        spacing: 8
+      }
       : null
   const grid = yAxis.splitLine.show
     ? {
-        line: {
-          style: {
-            stroke: yAxis.splitLine.lineStyle.color,
-            lineWidth: yAxis.splitLine.lineStyle.width,
-            lineDash: getLineDash(yAxis.splitLine.lineStyle.style)
-          }
+      line: {
+        style: {
+          stroke: yAxis.splitLine.lineStyle.color,
+          lineWidth: yAxis.splitLine.lineStyle.width,
+          lineDash: getLineDash(yAxis.splitLine.lineStyle.style)
         }
       }
+    }
     : null
   const axisCfg = yAxis.axisLine ? yAxis.axisLine : DEFAULT_YAXIS_STYLE.axisLine
   const line = axisCfg.show
     ? {
-        style: {
-          stroke: axisCfg.lineStyle.color,
-          lineWidth: axisCfg.lineStyle.width,
-          lineDash: getLineDash(axisCfg.lineStyle.style)
-        }
+      style: {
+        stroke: axisCfg.lineStyle.color,
+        lineWidth: axisCfg.lineStyle.width,
+        lineDash: getLineDash(axisCfg.lineStyle.style)
       }
+    }
     : null
   const tickLine = axisCfg.show
     ? {
-        style: {
-          stroke: axisCfg.lineStyle.color,
-          lineWidth: axisCfg.lineStyle.width
-        }
+      style: {
+        stroke: axisCfg.lineStyle.color,
+        lineWidth: axisCfg.lineStyle.width
       }
+    }
     : null
   const rotate = yAxis.axisLabel.rotate
   let textAlign = 'end'
@@ -688,15 +698,15 @@ export function getYAxisExt(chart: Chart) {
   }
   const label = yAxis.axisLabel.show
     ? {
-        rotate: (rotate * Math.PI) / 180,
-        style: {
-          fill: yAxis.axisLabel.color,
-          fontSize: yAxis.axisLabel.fontSize,
-          textBaseline,
-          textAlign,
-          fontFamily: chart.fontFamily
-        }
+      rotate: (rotate * Math.PI) / 180,
+      style: {
+        fill: yAxis.axisLabel.color,
+        fontSize: yAxis.axisLabel.fontSize,
+        textBaseline,
+        textAlign,
+        fontFamily: chart.fontFamily
       }
+    }
     : null
 
   axis = {
@@ -1512,7 +1522,7 @@ export async function getMapScene(
       await scene.removeAllLayer()
       try {
         scene.setPitch(miscStyle.mapPitch)
-      } catch (e) {}
+      } catch (e) { }
       if (mapKey.mapType === 'tianditu') {
         if (mapStyle === 'normal') {
           scene.map?.removeStyle()
@@ -2449,8 +2459,8 @@ export const configRoundAngle = (chart: Chart, styleName: string, callBack?: (da
                   ? bottomRadius
                   : finalRadius
                 : isTopRound
-                ? topRadius
-                : finalRadius,
+                  ? topRadius
+                  : finalRadius,
             ...(callBack ? callBack(datum) : {})
           }
         }

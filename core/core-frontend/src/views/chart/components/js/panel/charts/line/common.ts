@@ -59,7 +59,7 @@ export const LINE_EDITOR_PROPERTY_INNER: EditorPropertyInner = {
     'letterSpace',
     'fontShadow'
   ],
-  'legend-selector': ['icon', 'orient', 'fontSize', 'color', 'hPosition', 'vPosition'],
+  'legend-selector': ['icon', 'orient', 'fontSize', 'color', 'hPosition', 'vPosition', 'autoWrap'],
   'function-cfg': ['slider', 'emptyDataStrategy'],
   threshold: ['lineThreshold']
 }

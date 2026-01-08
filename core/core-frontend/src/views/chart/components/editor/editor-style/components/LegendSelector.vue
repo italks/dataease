@@ -578,6 +578,20 @@ onMounted(() => {
       </el-radio-group>
     </el-form-item>
 
+    <el-form-item
+      class="form-item"
+      :class="'form-item-' + themes"
+      v-if="showProperty('autoWrap')"
+    >
+      <el-checkbox
+        size="small"
+        :effect="themes"
+        v-model="state.legendForm.autoWrap"
+        @change="changeLegendStyle('autoWrap')"
+        :label="t('chart.legend_auto_wrap')"
+      />
+    </el-form-item>
+
     <el-space>
       <el-form-item
         :label="t('chart.text_position')"

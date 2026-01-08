@@ -1234,6 +1234,7 @@ export default {
     vertical: 'Vertical',
     legend: 'Legend',
     legend_num: 'Legend number',
+    legend_auto_wrap: 'Auto wrap',
     shape: 'Shape',
     polygon: 'Polygon',
     circle: 'Circle',

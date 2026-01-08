@@ -594,7 +594,8 @@ export const DEFAULT_LEGEND_STYLE_BASE: ChartLegendStyle = {
   size: 4,
   showRange: true,
   sort: 'none',
-  customSort: []
+  customSort: [],
+  autoWrap: false
 }
 
 export const DEFAULT_LEGEND_STYLE: ChartLegendStyle = {
@@ -608,7 +609,8 @@ export const DEFAULT_LEGEND_STYLE: ChartLegendStyle = {
   size: 4,
   showRange: true,
   sort: 'none',
-  customSort: []
+  customSort: [],
+  autoWrap: false
 }
 
 export const DEFAULT_LEGEND_STYLE_LIGHT: ChartLegendStyle = {

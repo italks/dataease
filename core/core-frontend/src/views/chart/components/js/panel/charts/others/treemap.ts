@@ -30,7 +30,7 @@ export class Treemap extends G2PlotChartView<TreemapOptions, G2Treemap> {
     'border-style': ['all'],
     'basic-style-selector': ['colors', 'alpha', 'seriesColor'],
     'label-selector': ['fontSize', 'color', 'showDimension', 'showQuota', 'showProportion'],
-    'legend-selector': ['icon', 'orient', 'fontSize', 'color', 'hPosition', 'vPosition'],
+    'legend-selector': ['icon', 'orient', 'fontSize', 'color', 'hPosition', 'vPosition', 'autoWrap'],
     'tooltip-selector': ['fontSize', 'color', 'backgroundColor', 'seriesTooltipFormatter', 'show'],
     'title-selector': [
       'title',

@@ -67,7 +67,7 @@ export class BulletGraph extends G2PlotChartView<G2BulletOptions, G2Bullet> {
       ),
       'axisLabelFormatter'
     ],
-    'legend-selector': ['showRange', 'orient', 'fontSize', 'color', 'hPosition', 'vPosition']
+    'legend-selector': ['showRange', 'orient', 'fontSize', 'color', 'hPosition', 'vPosition', 'autoWrap']
   }
 
   async drawChart(drawOption: G2PlotDrawOptions<G2Bullet>): Promise<G2Bullet> {
