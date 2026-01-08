@@ -64,7 +64,7 @@ export const CHART_MIX_EDITOR_PROPERTY_INNER: EditorPropertyInner = {
     'letterSpace',
     'fontShadow'
   ],
-  'legend-selector': ['icon', 'orient', 'fontSize', 'color', 'hPosition', 'vPosition'],
+  'legend-selector': ['icon', 'orient', 'fontSize', 'color', 'hPosition', 'vPosition', 'autoWrap'],
   'function-cfg': ['emptyDataStrategy']
 }
 

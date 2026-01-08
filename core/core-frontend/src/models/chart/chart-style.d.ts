@@ -138,6 +138,10 @@ declare interface ChartLegendStyle {
    * 自定义排序
    */
   customSort: string[]
+  /**
+   * 自动换行显示
+   */
+  autoWrap: boolean
 }
 
 /**

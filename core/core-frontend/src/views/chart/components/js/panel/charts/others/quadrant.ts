@@ -83,7 +83,7 @@ export class Quadrant extends G2PlotChartView<ScatterOptions, G2Scatter> {
       'letterSpace',
       'fontShadow'
     ],
-    'legend-selector': ['icon', 'orient', 'color', 'fontSize', 'hPosition', 'vPosition'],
+    'legend-selector': ['icon', 'orient', 'color', 'fontSize', 'hPosition', 'vPosition', 'autoWrap'],
     'quadrant-selector': ['regionStyle', 'label', 'lineStyle']
   }
   axis: AxisType[] = [

@@ -96,7 +96,7 @@ export class BidirectionalHorizontalBar extends G2PlotChartView<
       'letterSpace',
       'fontShadow'
     ],
-    'legend-selector': ['icon', 'orient', 'fontSize', 'color', 'hPosition', 'vPosition'],
+    'legend-selector': ['icon', 'orient', 'fontSize', 'color', 'hPosition', 'vPosition', 'autoWrap'],
     'function-cfg': ['emptyDataStrategy'],
     'label-selector': ['hPosition', 'vPosition', 'seriesLabelFormatter'],
     'tooltip-selector': ['fontSize', 'color', 'backgroundColor', 'seriesTooltipFormatter', 'show'],

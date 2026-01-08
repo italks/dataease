@@ -53,7 +53,7 @@ export class Waterfall extends G2PlotChartView<WaterfallOptions, G2Waterfall> {
       'letterSpace',
       'fontShadow'
     ],
-    'legend-selector': ['icon', 'orient', 'fontSize', 'color', 'hPosition', 'vPosition'],
+    'legend-selector': ['icon', 'orient', 'fontSize', 'color', 'hPosition', 'vPosition', 'autoWrap'],
     'x-axis-selector': [
       'position',
       'name',

@@ -1323,6 +1323,7 @@ export default {
     vertical: '垂直',
     legend: '图例',
     legend_num: '图例数',
+    legend_auto_wrap: '自动换行',
     shape: '形状',
     polygon: '多边形',
     circle: '圆形',

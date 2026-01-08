@@ -50,7 +50,7 @@ export class Radar extends G2PlotChartView<RadarOptions, G2Radar> {
       'letterSpace',
       'fontShadow'
     ],
-    'legend-selector': ['icon', 'orient', 'color', 'fontSize', 'hPosition', 'vPosition']
+    'legend-selector': ['icon', 'orient', 'color', 'fontSize', 'hPosition', 'vPosition', 'autoWrap']
   }
   selectorSpec: EditorSelectorSpec = {
     ...this['selectorSpec'],

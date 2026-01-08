@@ -58,7 +58,7 @@ export class Map extends L7PlotChartView<ChoroplethOptions, Choropleth> {
       'zoom',
       'gradient-color'
     ],
-    'legend-selector': ['icon', 'fontSize', 'color'],
+    'legend-selector': ['icon', 'fontSize', 'color', 'autoWrap'],
     'tooltip-selector': [...MAP_EDITOR_PROPERTY_INNER['tooltip-selector'], 'carousel']
   }
   axis = MAP_AXIS_TYPE

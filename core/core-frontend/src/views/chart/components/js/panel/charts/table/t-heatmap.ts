@@ -60,7 +60,7 @@ export class TableHeatmap extends G2PlotChartView<HeatmapOptions, Heatmap> {
       'letterSpace',
       'fontShadow'
     ],
-    'legend-selector': ['orient', 'color', 'fontSize', 'hPosition', 'vPosition'],
+    'legend-selector': ['orient', 'color', 'fontSize', 'hPosition', 'vPosition', 'autoWrap'],
     'tooltip-selector': ['show', 'color', 'fontSize', 'backgroundColor', 'tooltipFormatter'],
     'border-style': ['all']
   }

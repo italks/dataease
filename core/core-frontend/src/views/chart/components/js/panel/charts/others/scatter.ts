@@ -79,7 +79,7 @@ export class Scatter extends G2PlotChartView<ScatterOptions, G2Scatter> {
       'letterSpace',
       'fontShadow'
     ],
-    'legend-selector': ['icon', 'orient', 'color', 'fontSize', 'hPosition', 'vPosition']
+    'legend-selector': ['icon', 'orient', 'color', 'fontSize', 'hPosition', 'vPosition', 'autoWrap']
   }
   axis: AxisType[] = ['xAxis', 'yAxis', 'extBubble', 'filter', 'drill', 'extLabel', 'extTooltip']
   axisConfig: AxisConfig = {

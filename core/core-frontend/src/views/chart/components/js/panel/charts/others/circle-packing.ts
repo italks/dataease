@@ -48,7 +48,7 @@ export class CirclePacking extends G2PlotChartView<CirclePackingOptions, G2Circl
     ],
     'function-cfg': ['emptyDataStrategy'],
     'label-selector': ['color', 'fontSize'],
-    'legend-selector': ['icon', 'orient', 'fontSize', 'color', 'hPosition', 'vPosition'],
+    'legend-selector': ['icon', 'orient', 'fontSize', 'color', 'hPosition', 'vPosition', 'autoWrap'],
     'tooltip-selector': ['color', 'fontSize', 'backgroundColor', 'tooltipFormatter', 'show']
   }
   axis: AxisType[] = ['xAxis', 'yAxis', 'filter', 'drill']
